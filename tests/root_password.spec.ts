@@ -11,7 +11,8 @@ test.describe('The user section', () => {
     await page.locator('.overview-users p').locator('text=Root password is').locator('button').click();
 
     // fill a new password
-    await page.locator('#rootPassword').fill('d-installer');
+    await page.locator('#password').fill('d-installer');
+    await page.locator('#passwordConfirmation').fill('d-installer');
     await page.locator('button[type="submit"]').click();
 
     // wait until the dialog is closed

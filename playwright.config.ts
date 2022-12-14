@@ -37,13 +37,10 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.BASE_URL || 'https://localhost:9090',
+    baseURL: process.env.BASE_URL || 'http://localhost:9090',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-
-    /* Tell all tests to load signed-in state from 'storageState.json' */
-    storageState: 'storageState.json',
+    /* load signed-in state from 'storageState.json' */
+    storageState: process.env.SKIP_LOGIN ? undefined : 'storageState.json',
   },
 
   /* Configure projects for major browsers */
@@ -91,12 +88,6 @@ const config: PlaywrightTestConfig = {
 
     /* Test against branded browsers. */
     // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
     //   name: 'Google Chrome',
     //   use: {
     //     channel: 'chrome',
@@ -104,8 +95,6 @@ const config: PlaywrightTestConfig = {
     // },
   ],
 
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
 };
 
 export default config;
