@@ -11,6 +11,6 @@ test.describe('The main page', () => {
   });
 
   test('has the Install button', async ({ page }) => {
-    await page.getByRole('button', { name: 'Install' }).isVisible();
+    await expect(page.getByRole('button', { name: 'Install'})).toBeVisible();
   });
 })
